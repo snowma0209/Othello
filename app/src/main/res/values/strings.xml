@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Othello</string>
+    <string name="DefaultCount">0</string>
+    <string name="black">黒 ：</string>
+    <string name="white">白 ：</string>
+    <string name="title">Othello</string>
+    <string name="string_bt_start" />
+    <string name="bt_start">START</string>
+    <string name="turnBlack">黒</string>
+    <string name="trun">ターン：</string>
+    <string name="character">Character</string>
+    <string name = "msg_pass">本当に降参しますか？</string>
+    <string name="msg_yes">はい</string>
+    <string name="msg_no">いいえ</string>
+    <string name="msg_cantpass">置くことが出来ない場合のみパス出来ます</string>
+    <string name="msg_revenge">再戦しますか？</string>
+</resources>
