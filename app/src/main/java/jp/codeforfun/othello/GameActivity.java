@@ -31,7 +31,6 @@ public class GameActivity extends AppCompatActivity implements SurrenderDialogFr
     String state = "Playing";
     static String[][] disc = new String[8][8];
     int i = 0;
-    //int x = 0;
     int j = 0;
     int J = 0;
     int BlackCount = 0;
@@ -58,8 +57,6 @@ public class GameActivity extends AppCompatActivity implements SurrenderDialogFr
         setButton();
         Count();
         SetListener();
-
-
     }
 
     @Override
@@ -71,8 +68,6 @@ public class GameActivity extends AppCompatActivity implements SurrenderDialogFr
             color.setImageResource(R.drawable.color_english11_black);
             win.setVisibility(View.VISIBLE);
         }
-        TableLayout tableLayout = findViewById(R.id.tableLayout);
-        //tableLayout.setEnabled(false);
         state = "finished";
     }
 
@@ -93,7 +88,7 @@ public class GameActivity extends AppCompatActivity implements SurrenderDialogFr
         return false;
     }
 
-    private class DiscCheckListener implements View.OnClickListener{
+    public class DiscCheckListener implements View.OnClickListener{
 
         @SuppressLint("NonConstantResourceId")
         @Override
@@ -3840,8 +3835,6 @@ public class GameActivity extends AppCompatActivity implements SurrenderDialogFr
                 case R.id.bt_Surrender:
                     SurrenderDialogFragment dialogFragment = new SurrenderDialogFragment();
                     dialogFragment.show(getSupportFragmentManager(),"SurrenderDialogFragment");
-
-
             }
         }
     }
@@ -3892,7 +3885,7 @@ public class GameActivity extends AppCompatActivity implements SurrenderDialogFr
         return  false;
     }
 
-    private boolean checkLeftUp(int i,int j){
+    public boolean checkLeftUp(int i,int j){
 
             for (int x = i-1; 0 <= x; x--) {
                 j--;
@@ -3902,13 +3895,12 @@ public class GameActivity extends AppCompatActivity implements SurrenderDialogFr
                     }else if(disc[x][j].equals(turn)) {
                         return true;
                     }
-
             }
             return false;
 
     }
 
-    private boolean checkUp(int i,int j){
+    public boolean checkUp(int i,int j){
 
         for(int J = j-1; 0 <= J; J--){
             if(disc[i][J].equals(N)){
@@ -3920,7 +3912,7 @@ public class GameActivity extends AppCompatActivity implements SurrenderDialogFr
         return false;
     }
 
-    private boolean checkRightUp(int i,int j){
+    public boolean checkRightUp(int i,int j){
         for (int x = i+1; x <= 7; x++) {
             j--;
             if (j==-1)break;
@@ -3933,7 +3925,7 @@ public class GameActivity extends AppCompatActivity implements SurrenderDialogFr
         return false;
     }
 
-    private boolean checkLeft(int i,int j){
+    public boolean checkLeft(int i,int j){
             for (int x = i-1; 0 <= x; x--) {
                 if (disc[x][j].equals(N)) {
                     return false;
@@ -3945,7 +3937,7 @@ public class GameActivity extends AppCompatActivity implements SurrenderDialogFr
             return false;
     }
 
-    private boolean checkRight(int i,int j){
+    public boolean checkRight(int i,int j){
             for (int x = i+1; x <= 7; x++) {
                 if (disc[x][j].equals(N)) {
                     return false;
@@ -3956,7 +3948,7 @@ public class GameActivity extends AppCompatActivity implements SurrenderDialogFr
             return false;
     }
 
-    private boolean checkLeftDown(int i,int j){
+    public boolean checkLeftDown(int i,int j){
             for (int x = i-1; 0 <= x; x--) {
                 j++;
                 if (j==8)break;
@@ -3969,7 +3961,7 @@ public class GameActivity extends AppCompatActivity implements SurrenderDialogFr
             return false;
         }
 
-    private boolean checkDown(int i,int j){
+    public boolean checkDown(int i,int j){
         for (int J = j+1; J <= 7; J++){
             if (disc[i][J].equals(N)) {
                 return false;
@@ -3980,7 +3972,7 @@ public class GameActivity extends AppCompatActivity implements SurrenderDialogFr
         return false;
     }
 
-    private boolean checkRightDown(int i,int j){
+    public boolean checkRightDown(int i,int j){
             for (int x = i+1; x <= 7; x++) {
                 j++;
                 if(j==8)break;
@@ -3993,7 +3985,7 @@ public class GameActivity extends AppCompatActivity implements SurrenderDialogFr
             return false;
     }
 
-    private void Set(ImageButton button,int x,int j){
+    public void Set(ImageButton button,int x,int j){
         if (disc[x][j].equals(turn))
         if(turn.equals(B)) {
             disc[x][j]=B;
@@ -4004,7 +3996,7 @@ public class GameActivity extends AppCompatActivity implements SurrenderDialogFr
         }
     }
 
-    private void Set(ImageButton button){
+    public void Set(ImageButton button){
         if(turn.equals(B)) {
             SetBlack(button);
             disc[i][j] = turn;
@@ -4016,7 +4008,7 @@ public class GameActivity extends AppCompatActivity implements SurrenderDialogFr
     }
 
 
-    private void findViews(){
+    public void findViews(){
         a1 = findViewById(R.id.a1); b1 = findViewById(R.id.b1); c1 = findViewById(R.id.c1); d1 = findViewById(R.id.d1);
         e1 = findViewById(R.id.e1); f1 = findViewById(R.id.f1); g1 = findViewById(R.id.g1); h1 = findViewById(R.id.h1);
         a2 = findViewById(R.id.a2); b2 = findViewById(R.id.b2); c2 = findViewById(R.id.c2); d2 = findViewById(R.id.d2);
@@ -4037,7 +4029,7 @@ public class GameActivity extends AppCompatActivity implements SurrenderDialogFr
         pass = findViewById(R.id.bt_Pass);surrender = findViewById(R.id.bt_Surrender);
         color = findViewById(R.id.Color);win = findViewById(R.id.win);
     }
-    private void setButton(){
+    public void setButton(){
         a1.setEnabled(setPlace(0, 0));a2.setEnabled(setPlace( 0, 1));
         a3.setEnabled(setPlace(0, 2));a4.setEnabled(setPlace( 0, 3));
         a5.setEnabled(setPlace(0, 4));a6.setEnabled(setPlace(0, 5));
@@ -4072,7 +4064,7 @@ public class GameActivity extends AppCompatActivity implements SurrenderDialogFr
         h7.setEnabled(setPlace(7, 6));h8.setEnabled(setPlace(7, 7));
         pass.setEnabled(CheckPassButton());
     }
-    private void SetListener(){
+    public void SetListener(){
         DiscCheckListener discCheckListener = new DiscCheckListener();
         a1.setOnClickListener(discCheckListener);a2.setOnClickListener(discCheckListener);
         a3.setOnClickListener(discCheckListener);a4.setOnClickListener(discCheckListener);
@@ -4110,17 +4102,17 @@ public class GameActivity extends AppCompatActivity implements SurrenderDialogFr
         pass.setOnClickListener(buttonListener);surrender.setOnClickListener(buttonListener);
     }
 
-    private void SetBlack(ImageButton imageButton){
+    public void SetBlack(ImageButton imageButton){
         imageButton.setImageResource(R.drawable.game_reversi_black);
         imageButton.setClickable(false);
     }
 
-    private void SetWhite(ImageButton imageButton){
+    public void SetWhite(ImageButton imageButton){
         imageButton.setImageResource(R.drawable.game_reversi_white);
         imageButton.setClickable(false);
     }
 
-    private void Count(){
+    public void Count(){
         turnCount++;
         Log.d("turn",String.valueOf(turnCount));
         BlackCount=0;
@@ -4148,7 +4140,7 @@ public class GameActivity extends AppCompatActivity implements SurrenderDialogFr
         }
     }
 
-    private void ChangeTurn(){
+    public void ChangeTurn(){
         if(turn.equals(B)){
             turn = W;
             unturn = B;
@@ -4162,16 +4154,16 @@ public class GameActivity extends AppCompatActivity implements SurrenderDialogFr
         }
     }
 
-    private boolean CheckUnturn(int x, int j){
+    public boolean CheckUnturn(int x, int j){
         return disc[x][j].equals(unturn);
     }
 
-    private void Reverse(int i, int j){
+    public void Reverse(int i, int j){
         disc[i][j] = turn;
         Log.d("reverse",disc[i][j]+" "+i+" "+j);
     }
 
-    private boolean CheckPassButton(){
+    public boolean CheckPassButton(){
         for(int i = 0; i < 8; i++){
             for(int j = 0; j < 8; j++){
                 if(setPlace(i,j)){
@@ -4181,6 +4173,4 @@ public class GameActivity extends AppCompatActivity implements SurrenderDialogFr
         }
         return true;
     }
-
-
 }
